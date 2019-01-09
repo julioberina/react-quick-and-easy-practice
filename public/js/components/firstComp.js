@@ -34,13 +34,24 @@ var Layout = function (_Component) {
 
     _this.state = {
       name: 'Julio',
-      health: 40,
+      health: 100,
       level: 10
     };
+
+    _this.clickedGirl = _this.clickedGirl.bind(_this);
     return _this;
   }
 
   _createClass(Layout, [{
+    key: 'clickedGirl',
+    value: function clickedGirl() {
+      this.setState({
+        health: this.state.health - 10
+      }, function () {
+        console.log("Hey I clicked the girl. Her health is now " + this.state.health);
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
@@ -67,7 +78,8 @@ var Layout = function (_Component) {
             'Level: ',
             this.state.level
           ),
-          _react2.default.createElement('img', { src: '/img/bape.png', alt: 'girl with bape' })
+          _react2.default.createElement('img', { src: '/img/bape.png', alt: 'girl with bape',
+            onClick: this.clickedGirl })
         )
       );
     }
