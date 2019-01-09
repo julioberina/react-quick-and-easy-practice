@@ -32,12 +32,10 @@ var Layout = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (Layout.__proto__ || Object.getPrototypeOf(Layout)).call(this));
 
-    _this.clickedBtn = function () {
-      console.log('swag');
-    };
-
     _this.state = {
-      name: 'Joe'
+      name: 'Julio',
+      health: 40,
+      level: 10
     };
     return _this;
   }
@@ -46,63 +44,30 @@ var Layout = function (_Component) {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        'div',
-        { className: 'home' },
+        'section',
+        { id: 'parent' },
         _react2.default.createElement(
-          'div',
-          { className: 'Aligner' },
+          'section',
+          { className: this.state.health < 55 ? 'danger-red' : 'blue-bg' },
           _react2.default.createElement(
-            'div',
-            { className: 'Aligner-item' },
-            _react2.default.createElement('img', { src: '/img/logo.png' }),
-            _react2.default.createElement(
-              'h1',
-              null,
-              'Starter-Kit-2k18'
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'menu' },
-              _react2.default.createElement(
-                'ul',
-                null,
-                _react2.default.createElement(
-                  'div',
-                  { onClick: this.clickedBtn },
-                  'clickked this'
-                ),
-                _react2.default.createElement(
-                  'li',
-                  null,
-                  _react2.default.createElement(
-                    'a',
-                    { href: 'http://starterkit.codingphase.com', target: 'new' },
-                    'Documentation'
-                  )
-                ),
-                _react2.default.createElement(
-                  'li',
-                  null,
-                  _react2.default.createElement(
-                    'a',
-                    { href: 'http://www.codingphase.com', target: 'new' },
-                    'CodingPhase.Com'
-                  )
-                )
-              )
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'version-num' },
-              'version 2.0.18'
-            ),
-            _react2.default.createElement('br', null),
-            _react2.default.createElement(
-              'a',
-              { className: 'github-button', href: 'https://github.com/codingphasedotcom/Starter-Kit-2018', 'data-icon': 'octicon-star', 'data-style': 'mega', 'data-count-href': '/codingphasedotcom/rocky/stargazers', 'data-count-api': '/repos/codingphasedotcom/rocky#stargazers_count', 'data-count-aria-label': '# stargazers on GitHub', 'aria-label': 'Star codingphasedotcom/rocky on GitHub' },
-              'Star'
-            )
-          )
+            'h3',
+            null,
+            'Name: ',
+            this.state.name
+          ),
+          _react2.default.createElement(
+            'h3',
+            null,
+            'Health: ',
+            this.state.health
+          ),
+          _react2.default.createElement(
+            'h3',
+            null,
+            'Level: ',
+            this.state.level
+          ),
+          _react2.default.createElement('img', { src: '/img/bape.png', alt: 'girl with bape' })
         )
       );
     }
@@ -110,6 +75,32 @@ var Layout = function (_Component) {
 
   return Layout;
 }(_react.Component);
+
+var Header = function Header() {
+  return _react2.default.createElement(
+    'header',
+    null,
+    _react2.default.createElement(
+      'ul',
+      null,
+      _react2.default.createElement(
+        'li',
+        null,
+        'Home'
+      ),
+      _react2.default.createElement(
+        'li',
+        null,
+        'About'
+      ),
+      _react2.default.createElement(
+        'li',
+        null,
+        'Contact'
+      )
+    )
+  );
+};
 
 var app = document.getElementById('app');
 
