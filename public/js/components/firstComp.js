@@ -46,9 +46,9 @@ var Layout = function (_Component) {
     key: 'clickedGirl',
     value: function clickedGirl() {
       this.setState({
-        health: this.state.health - 10
+        health: this.state.health === "DEAD!" || this.state.health === 10 ? "DEAD!" : this.state.health - 10
       }, function () {
-        console.log("Hey I clicked the girl. Her health is now " + this.state.health);
+        if (this.state.health !== "DEAD!") console.log("Hey I clicked the girl. Her health is now " + this.state.health);else console.log("The girl is already dead!");
       });
     }
   }, {
@@ -60,7 +60,7 @@ var Layout = function (_Component) {
         _react2.default.createElement(Header, null),
         _react2.default.createElement(
           'section',
-          { className: this.state.health < 55 ? 'danger-red' : 'blue-bg' },
+          { className: this.state.health === "DEAD!" || this.state.health < 55 ? 'danger-red' : 'blue-bg' },
           _react2.default.createElement(
             'div',
             { className: 'user-info' },
@@ -83,7 +83,7 @@ var Layout = function (_Component) {
               this.state.level
             )
           ),
-          _react2.default.createElement(GirlImage, null)
+          _react2.default.createElement(GirlImage, { clickEvt: this.clickedGirl })
         )
       );
     }
@@ -111,7 +111,7 @@ var GirlImage = function (_Component2) {
         'section',
         { className: 'girlImageComp' },
         _react2.default.createElement('img', { src: '/img/bape.png', alt: 'girl with bape',
-          onClick: this.clickedGirl })
+          onClick: this.props.clickEvt })
       );
     }
   }]);

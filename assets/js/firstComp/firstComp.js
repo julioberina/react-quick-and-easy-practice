@@ -15,9 +15,12 @@ class Layout extends Component {
 
   clickedGirl() {
     this.setState({
-      health: this.state.health - 10
+      health: (this.state.health === "DEAD!" || this.state.health === 10) ? "DEAD!" : this.state.health - 10
     }, function() {
-      console.log("Hey I clicked the girl. Her health is now " + this.state.health)
+      if (this.state.health !== "DEAD!")
+        console.log("Hey I clicked the girl. Her health is now " + this.state.health);
+      else
+        console.log("The girl is already dead!");
     });
   }
 
@@ -25,13 +28,13 @@ class Layout extends Component {
     return (
       <section id="parent">
         <Header />
-        <section className={(this.state.health) < 55 ? 'danger-red' : 'blue-bg'}>
+        <section className={(this.state.health === "DEAD!" || this.state.health < 55) ? 'danger-red' : 'blue-bg'}>
           <div className="user-info">
             <h3>Name: {this.state.name}</h3>
             <h3>Health: {this.state.health}</h3>
             <h3>Level: {this.state.level}</h3>
           </div>
-          <GirlImage />
+          <GirlImage clickEvt={this.clickedGirl} />
         </section>
       </section>
     );
@@ -50,7 +53,7 @@ class GirlImage extends Component {
     return (
       <section className="girlImageComp">
         <img src="/img/bape.png" alt="girl with bape"
-        onClick={this.clickedGirl} />
+        onClick={this.props.clickEvt} />
       </section>
     );
   }
