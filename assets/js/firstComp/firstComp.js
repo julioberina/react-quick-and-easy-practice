@@ -24,17 +24,38 @@ class Layout extends Component {
   render () {
     return (
       <section id="parent">
+        <Header />
         <section className={(this.state.health) < 55 ? 'danger-red' : 'blue-bg'}>
-          <h3>Name: {this.state.name}</h3>
-          <h3>Health: {this.state.health}</h3>
-          <h3>Level: {this.state.level}</h3>
-          <img src="/img/bape.png" alt="girl with bape"
-          onClick={this.clickedGirl} />
+          <div className="user-info">
+            <h3>Name: {this.state.name}</h3>
+            <h3>Health: {this.state.health}</h3>
+            <h3>Level: {this.state.level}</h3>
+          </div>
+          <GirlImage />
         </section>
       </section>
     );
   }
 }
+
+class GirlImage extends Component {
+  constructor () {
+    super();
+    this.state = {
+
+    }
+  }
+
+  render() {
+    return (
+      <section className="girlImageComp">
+        <img src="/img/bape.png" alt="girl with bape"
+        onClick={this.clickedGirl} />
+      </section>
+    );
+  }
+}
+
 
 const Header = function() {
   return (
