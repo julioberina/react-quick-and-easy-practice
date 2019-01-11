@@ -1,3 +1,3 @@
-# real-estate-app
+# react-quick-and-easy-practice
 
-This is a real estate app I'm building as part of my journey to learn React.
+This is just practice that I'm doing in order to refresh my React JS skills.
